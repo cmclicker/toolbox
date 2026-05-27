@@ -92,6 +92,19 @@ My authored explainers for PowerShell. For curated external material (MS Learn, 
 - [Strings, quoting, and formatting](references/powershell/strings-and-quoting.md) — Double-quoted strings interpolate ("hi $name"); single-quoted strings are literal ('hi $name' stays $name). For property/expression interpolation use…
 - [Variables, types, and operators](references/powershell/variables-and-operators.md) — Variables are $name. PowerShell uses word operators, not symbols, for comparison: -eq, -ne, -lt, -gt, -match, -like. Comparisons against a collection filter it…
 
+### [TypeScript — references](references/typescript/README.md)
+
+My authored explainers for TypeScript — the type system on top of JavaScript. The runtime (Node) is in ../node/; JavaScript-the-language is a separate domain…
+
+- [Declaration files and `@types`](references/typescript/declaration-files-and-types.md) — .d.ts files contain types only (no implementation) — they describe the shape of JavaScript so TypeScript can check code that uses it. Libraries either ship…
+- [Generics](references/typescript/generics.md) — Generics let a function or type work over a type parameter instead of a fixed type, preserving the relationship between inputs and outputs. function…
+- [Narrowing and type guards](references/typescript/narrowing-and-guards.md) — TypeScript follows your control flow and narrows a broad type to a specific one inside branches — after if (typeof x === "string"), x is string in that block.…
+- [Strictness flags](references/typescript/strictness-flags.md) — "strict": true turns on a family of flags that make the type checker actually catch bugs — most importantly strictNullChecks (you must handle null/undefined)…
+- [`tsconfig.json`](references/typescript/tsconfig.md) — tsconfig.json configures the TypeScript compiler — what JS version to emit, which module system, how strict to be, and what files to include. The options that…
+- [`type` vs. `interface`](references/typescript/type-vs-interface.md) — Both name a shape. interface is for object/class shapes and supports declaration merging and extends; type aliases anything — unions, intersections,…
+- [Types vs. runtime: erasure, `as`, `satisfies`, and validation](references/typescript/type-vs-runtime-and-validation.md) — TypeScript types are erased at compile time — they do not exist when your code runs. So types cannot check external data (API responses, JSON, env vars, form…
+- [Built-in utility types](references/typescript/utility-types.md) — TypeScript ships generic helper types that transform existing types so you don't redeclare shapes: Partial<T> (all optional), Pick<T, K>/Omit<T, K> (subset),…
+
 ### [Windows — references](references/windows/README.md)
 
 My authored explainers for Windows as a development environment — not Windows administration in general. Shell languages live next door: PowerShell in…
@@ -137,6 +150,11 @@ Curated external material for Node.js. My own explainers are in ../../references
 Curated external material for PowerShell. My own explainers are in ../../references/powershell/; reusable templates in ../../snippets/powershell/.
 
 
+### [TypeScript — resources](resources/typescript/README.md)
+
+Curated external material for TypeScript. My own explainers are in ../../references/typescript/; the runtime is in ../node/; the JavaScript-language catalog is…
+
+
 ### [Windows — resources](resources/windows/README.md)
 
 Curated external material for Windows as a dev environment. My own explainers are in ../../references/windows/. Shell-language resources: ../powershell/,…
@@ -176,6 +194,11 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 - [advanced-function-template.ps1](snippets/powershell/advanced-function-template.ps1) — Advanced function template: parameter validation, pipeline input, -WhatIf/-Confirm,
 - [argument-completer.ps1](snippets/powershell/argument-completer.ps1) — Register tab-completion for a command's parameter. Drop into your $PROFILE so
 - [strict-mode.ps1](snippets/powershell/strict-mode.ps1) — PowerShell "strict mode" header. Paste at the top of a script.
+
+### `snippets/typescript/`
+
+- [exhaustiveness-check.ts](snippets/typescript/exhaustiveness-check.ts) — Exhaustiveness checking for discriminated unions: the compiler errors if a new
+- [result-type.ts](snippets/typescript/result-type.ts) — A Result<T, E> type: model success/failure as data instead of throwing, so the
 
 ### `snippets/windows/`
 
@@ -225,6 +248,11 @@ Drop-in GitHub repo files. These are stored here as reusable templates; copy the
 
 - [PSScriptAnalyzerSettings.psd1](configs/powershell/PSScriptAnalyzerSettings.psd1) — PSScriptAnalyzer settings. Copy to a project root as PSScriptAnalyzerSettings.psd1,
 - [profile.ps1](configs/powershell/profile.ps1) — Starter PowerShell profile. Copy to the path in $PROFILE (create it if missing:
+
+### `configs/typescript/`
+
+- [tsconfig.app-noemit.json](configs/typescript/tsconfig.app-noemit.json) — Variant for apps where a BUNDLER or runtime (Vite, esbuild, tsx, Bun) transpiles,
+- [tsconfig.base.json](configs/typescript/tsconfig.base.json) — Strict, modern TypeScript base config. Copy to a project, or extend it:
 
 ### `configs/windows/`
 
@@ -305,6 +333,11 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 ### `playbooks/powershell/`
 
 - [Playbook: debug a PowerShell script](playbooks/powershell/debug-a-script.md) — Trigger: a script errors, produces wrong output, or "won't run" at all. Est. time: 5–30 min. Concepts: ../../references/powershell/error-handling.md,…
+
+### `playbooks/typescript/`
+
+- [Playbook: adopt `strict` on an existing codebase](playbooks/typescript/adopt-strict-incrementally.md) — Trigger: an existing JS or loosely-typed TS project where flipping "strict": true produces hundreds of errors at once. Est. time: hours to weeks, spread out.…
+- [Playbook: debug a confusing TypeScript error](playbooks/typescript/debug-type-errors.md) — Trigger: a type error you don't understand — a wall of text, "not assignable to," or an error that points at the wrong place. Est. time: 2–20 min. Concepts:…
 
 ### `playbooks/windows/`
 

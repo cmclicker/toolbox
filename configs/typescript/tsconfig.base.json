@@ -1,0 +1,37 @@
+// Strict, modern TypeScript base config. Copy to a project, or extend it:
+//   { "extends": "./tsconfig.base.json", "compilerOptions": { "outDir": "dist" } }
+// tsconfig allows comments (JSONC). Reference: ../../references/typescript/tsconfig.md
+{
+  "compilerOptions": {
+    // --- Language / output ---
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"], // add "DOM" for browser code
+    "moduleDetection": "force",
+
+    // --- Strictness (the point of using TS) ---
+    "strict": true,
+    "noUncheckedIndexedAccess": true, // arr[i] / rec[key] are T | undefined
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "verbatimModuleSyntax": true, // enforce `import type`; correct ESM/CJS emit
+
+    // --- Interop / ergonomics ---
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // don't type-check deps' .d.ts (faster, fewer false errors)
+    "resolveJsonModule": true,
+    "isolatedModules": true, // safe for single-file transpilers (esbuild/swc/Babel)
+
+    // --- Emit (override per project; set noEmit:true if a bundler/tsx runs the code) ---
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
