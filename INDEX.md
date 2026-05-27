@@ -67,6 +67,17 @@ My authored explainers for PowerShell. For curated external material (MS Learn, 
 - [Strings, quoting, and formatting](references/powershell/strings-and-quoting.md) — Double-quoted strings interpolate ("hi $name"); single-quoted strings are literal ('hi $name' stays $name). For property/expression interpolation use…
 - [Variables, types, and operators](references/powershell/variables-and-operators.md) — Variables are $name. PowerShell uses word operators, not symbols, for comparison: -eq, -ne, -lt, -gt, -match, -like. Comparisons against a collection filter it…
 
+### [Windows — references](references/windows/README.md)
+
+My authored explainers for Windows as a development environment — not Windows administration in general. Shell languages live next door: PowerShell in…
+
+- [Environment variables and PATH on Windows](references/windows/environment-variables-and-path.md) — Windows stores environment variables in two persistent scopes — User and Machine (system) — held in the registry. When a process starts, Windows merges them…
+- [Paths and the filesystem on Windows](references/windows/paths-and-filesystem.md) — Windows paths use drive letters (C:\) and historically backslashes, though most APIs and shells now accept forward slashes too. The filesystem is…
+- [Windows Terminal and the available shells](references/windows/terminal-and-shells.md) — On Windows there's a difference between the terminal (the window/app that draws text and handles tabs, fonts, input) and the shell (the program that interprets…
+- [Windows 10 vs. 11 (for developers)](references/windows/windows-10-vs-11.md) — For day-to-day development the two are nearly identical — same shells, same WSL, same winget, same .NET/toolchains. The differences that matter to a developer…
+- [Package management: winget (and Scoop, Chocolatey)](references/windows/winget-and-package-management.md) — winget is the built-in Windows Package Manager — install/upgrade/remove apps from the command line instead of hunting for installers. It ships with modern…
+- [WSL (Windows Subsystem for Linux)](references/windows/wsl.md) — WSL runs a real Linux distribution inside Windows. WSL 2 (the default) uses a lightweight VM with a genuine Linux kernel, so Linux tooling, Docker, and native…
+
 ## `resources/`
 
 Curated, annotated links to external learning material — the websites, docs, courses, cheatsheets, and tools worth going to for a topic. The value here is the…
@@ -89,6 +100,11 @@ Curated external material for the GitHub platform. My own explainers (PRs, Actio
 ### [PowerShell — resources](resources/powershell/README.md)
 
 Curated external material for PowerShell. My own explainers are in ../../references/powershell/; reusable templates in ../../snippets/powershell/.
+
+
+### [Windows — resources](resources/windows/README.md)
+
+Curated external material for Windows as a dev environment. My own explainers are in ../../references/windows/. Shell-language resources: ../powershell/,…
 
 
 ## `snippets/`
@@ -115,6 +131,10 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 - [advanced-function-template.ps1](snippets/powershell/advanced-function-template.ps1) — Advanced function template: parameter validation, pipeline input, -WhatIf/-Confirm,
 - [argument-completer.ps1](snippets/powershell/argument-completer.ps1) — Register tab-completion for a command's parameter. Drop into your $PROFILE so
 - [strict-mode.ps1](snippets/powershell/strict-mode.ps1) — PowerShell "strict mode" header. Paste at the top of a script.
+
+### `snippets/windows/`
+
+- [path-helpers.ps1](snippets/windows/path-helpers.ps1) — PowerShell helpers for editing PATH safely on Windows. Dot-source or paste into
 
 ## `configs/`
 
@@ -151,6 +171,11 @@ Drop-in GitHub repo files. These are stored here as reusable templates; copy the
 
 - [PSScriptAnalyzerSettings.psd1](configs/powershell/PSScriptAnalyzerSettings.psd1) — PSScriptAnalyzer settings. Copy to a project root as PSScriptAnalyzerSettings.psd1,
 - [profile.ps1](configs/powershell/profile.ps1) — Starter PowerShell profile. Copy to the path in $PROFILE (create it if missing:
+
+### `configs/windows/`
+
+- [.wslconfig](configs/windows/.wslconfig) — Global WSL 2 settings. Copy to %USERPROFILE%\.wslconfig (applies to all WSL 2
+- [winget-packages.json](configs/windows/winget-packages.json)
 
 ## `prompts/`
 
@@ -209,6 +234,10 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 ### `playbooks/powershell/`
 
 - [Playbook: debug a PowerShell script](playbooks/powershell/debug-a-script.md) — Trigger: a script errors, produces wrong output, or "won't run" at all. Est. time: 5–30 min. Concepts: ../../references/powershell/error-handling.md,…
+
+### `playbooks/windows/`
+
+- [Playbook: set up a Windows dev machine](playbooks/windows/set-up-dev-machine.md) — Trigger: a fresh (or freshly-reset) Windows box you want ready for development. Est. time: 30–60 min plus download/reboot time. Concepts:…
 
 ## `scripts/`
 
