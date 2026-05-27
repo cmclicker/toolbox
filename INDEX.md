@@ -54,6 +54,19 @@ My authored explainers for the GitHub platform — the layer on top of Git. For 
 - [Pull requests and review](references/github/pull-requests.md) — A pull request proposes merging one branch into another, with review, discussion, and CI attached. Open it early as a draft to get CI running; mark ready when…
 - [Repository security features](references/github/repo-security.md) — GitHub provides several built-in security layers: secret scanning + push protection (blocks commits containing known credential formats), Dependabot (alerts +…
 
+### [PowerShell — references](references/powershell/README.md)
+
+My authored explainers for PowerShell. For curated external material (MS Learn, PSScriptAnalyzer, the Gallery), see ../../resources/powershell/. For reusable…
+
+- [Cmdlets, verbs, and discovery](references/powershell/cmdlets-and-discovery.md) — PowerShell commands are cmdlets named Verb-Noun (Get-Process, Set-Item, Remove-Variable). The verb comes from an approved list, so once you know the pattern…
+- [Error handling](references/powershell/error-handling.md) — PowerShell has two error kinds. Terminating errors stop execution and are catchable with try/catch. Non-terminating errors (the default for most cmdlet…
+- [Execution policy and profiles](references/powershell/execution-policy-and-profiles.md) — Execution policy controls whether .ps1 scripts are allowed to run; it's a safety speed-bump, not a security boundary. The usual developer setting is…
+- [Objects and the pipeline](references/powershell/objects-and-pipeline.md) — PowerShell's defining feature: the pipeline passes .NET objects, not text. Get-Process hands the next command real Process objects with typed properties — so…
+- [Windows PowerShell 5.1 vs. PowerShell 7+](references/powershell/powershell-5-vs-7.md) — There are two PowerShells. Windows PowerShell 5.1 (powershell.exe, "Desktop" edition) ships in Windows and is frozen — no new features. PowerShell 7+…
+- [Providers, PSDrives, and the filesystem](references/powershell/providers-and-filesystem.md) — PowerShell providers expose different data stores through one consistent set of item cmdlets (Get-ChildItem, Get-Item, Set-Item, Remove-Item, Test-Path). So…
+- [Strings, quoting, and formatting](references/powershell/strings-and-quoting.md) — Double-quoted strings interpolate ("hi $name"); single-quoted strings are literal ('hi $name' stays $name). For property/expression interpolation use…
+- [Variables, types, and operators](references/powershell/variables-and-operators.md) — Variables are $name. PowerShell uses word operators, not symbols, for comparison: -eq, -ne, -lt, -gt, -match, -like. Comparisons against a collection filter it…
+
 ## `resources/`
 
 Curated, annotated links to external learning material — the websites, docs, courses, cheatsheets, and tools worth going to for a topic. The value here is the…
@@ -71,6 +84,11 @@ Curated external material for learning and looking up Git. My own explainers on 
 ### [GitHub — resources](resources/github/README.md)
 
 Curated external material for the GitHub platform. My own explainers (PRs, Actions, gh, rulesets, security) are in ../../references/github/; this catalog…
+
+
+### [PowerShell — resources](resources/powershell/README.md)
+
+Curated external material for PowerShell. My own explainers are in ../../references/powershell/; reusable templates in ../../snippets/powershell/.
 
 
 ## `snippets/`
@@ -91,6 +109,12 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 ### `snippets/github/`
 
 - [gh-aliases.sh](snippets/github/gh-aliases.sh) — gh CLI aliases + one-liners. Set the aliases with gh alias set (they persist
+
+### `snippets/powershell/`
+
+- [advanced-function-template.ps1](snippets/powershell/advanced-function-template.ps1) — Advanced function template: parameter validation, pipeline input, -WhatIf/-Confirm,
+- [argument-completer.ps1](snippets/powershell/argument-completer.ps1) — Register tab-completion for a command's parameter. Drop into your $PROFILE so
+- [strict-mode.ps1](snippets/powershell/strict-mode.ps1) — PowerShell "strict mode" header. Paste at the top of a script.
 
 ## `configs/`
 
@@ -123,6 +147,11 @@ Drop-in GitHub repo files. These are stored here as reusable templates; copy the
 
 - [node.gitignore](configs/gitignore/node.gitignore) — Drop-in .gitignore for Node / TypeScript projects.
 
+### `configs/powershell/`
+
+- [PSScriptAnalyzerSettings.psd1](configs/powershell/PSScriptAnalyzerSettings.psd1) — PSScriptAnalyzer settings. Copy to a project root as PSScriptAnalyzerSettings.psd1,
+- [profile.ps1](configs/powershell/profile.ps1) — Starter PowerShell profile. Copy to the path in $PROFILE (create it if missing:
+
 ## `prompts/`
 
 Reusable LLM / agent prompts and instructions. The actual text you'd send to a model — or a template with {{variables}}.
@@ -150,6 +179,10 @@ Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walk
 - [Checklist: reviewing a pull request](checklists/github/pr-review.md) — Walk this when reviewing someone else's PR (or self-reviewing before marking ready). Each item is yes/no. Authoring side:…
 - [Checklist: repository hardening](checklists/github/repo-hardening.md) — Walk this after creating a repo that others can see or contribute to (especially public). Each item is yes/no. Concepts:…
 
+### `checklists/powershell/`
+
+- [Checklist: before shipping a PowerShell script](checklists/powershell/script-review.md) — Walk this before committing or relying on a non-trivial PowerShell script. Each item is yes/no. Background in ../../references/powershell/.
+
 ## `playbooks/`
 
 Multi-step procedures with branches and judgment calls. Narrative shape — distinct from a checklist, which is pure yes/no verification.
@@ -172,6 +205,10 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 - [Playbook: create and harden a new GitHub repo](playbooks/github/set-up-new-repo.md) — Trigger: starting a new project and publishing it to GitHub. Est. time: 10–15 min. Pairs with the local-side ../../checklists/git/new-repo-setup.md and…
 - [Playbook: ship a release](playbooks/github/ship-a-release.md) — Trigger: a version is ready to publish. Est. time: 5–15 min. Tag mechanics: ../../references/git/tags-and-signing.md; the version-control side of undoing a bad…
 - [Playbook: sync a fork with upstream](playbooks/github/sync-a-fork.md) — Trigger: your fork has fallen behind the original repo and you want it current (before starting new work, or before opening a PR). Est. time: 1–5 min. Model:…
+
+### `playbooks/powershell/`
+
+- [Playbook: debug a PowerShell script](playbooks/powershell/debug-a-script.md) — Trigger: a script errors, produces wrong output, or "won't run" at all. Est. time: 5–30 min. Concepts: ../../references/powershell/error-handling.md,…
 
 ## `scripts/`
 
