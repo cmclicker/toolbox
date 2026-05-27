@@ -1,4 +1,4 @@
-# Cody's Toolbox
+# Toolbox
 
 > A personal, product-agnostic toolbox: organized, validated, reusable dev assets I reach for across projects — snippets, configs, references, prompts, checklists, and playbooks.
 

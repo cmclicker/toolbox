@@ -1,5 +1,5 @@
 {
-  "name": "codys-toolbox",
+  "name": "toolbox",
   "version": "0.1.0",
   "private": true,
   "description": "Personal, product-agnostic toolbox of reusable dev assets: snippets, configs, references, prompts, checklists, playbooks.",
