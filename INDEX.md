@@ -54,6 +54,19 @@ My authored explainers for the GitHub platform — the layer on top of Git. For 
 - [Pull requests and review](references/github/pull-requests.md) — A pull request proposes merging one branch into another, with review, discussion, and CI attached. Open it early as a draft to get CI running; mark ready when…
 - [Repository security features](references/github/repo-security.md) — GitHub provides several built-in security layers: secret scanning + push protection (blocks commits containing known credential formats), Dependabot (alerts +…
 
+### [Linux — references](references/linux/README.md)
+
+My authored explainers for Linux as a dev/server environment. The shell language lives in ../bash/; this domain is the OS around it. For curated external…
+
+- [The Linux filesystem hierarchy](references/linux/filesystem-hierarchy.md) — Linux has one tree rooted at / (no drive letters); everything — disks, devices, network mounts — hangs off it. The Filesystem Hierarchy Standard (FHS) defines…
+- [Networking basics](references/linux/networking-basics.md) — The everyday Linux networking toolkit: ip (interfaces/addresses/routes), ss (open sockets/listening ports), curl/wget (HTTP), ssh/scp (remote access and copy),…
+- [Package managers (and distro differences)](references/linux/package-managers.md) — How you install software is the main thing that differs between Linux distributions. Debian/Ubuntu use apt (.deb packages); Fedora/RHEL use dnf (.rpm); Arch…
+- [Permissions and ownership](references/linux/permissions-and-ownership.md) — Every file has an owner, a group, and three permission triads — for owner, group, and others — each granting read (r/4), write (w/2), execute (x/1). chmod sets…
+- [Processes, jobs, and signals](references/linux/processes-and-signals.md) — Every running program is a process with a PID. You inspect them with ps/top/htop, control them with signals sent via kill, and manage foreground/background…
+- [systemd and services](references/linux/systemd-and-services.md) — systemd is the init system and service manager on most modern distros (Ubuntu, Debian, Fedora, RHEL, Arch). It starts the system and manages long-running…
+- [Text-processing tools (grep, sed, awk, find, and friends)](references/linux/text-processing-tools.md) — The Unix philosophy is small tools that read text on stdin and write to stdout, composed with pipes. The core set — grep (search), sed (stream-edit), awk…
+- [Users, groups, and sudo](references/linux/users-sudo-and-groups.md) — Linux is multi-user. Each user has a UID, a primary group, and optional supplementary groups; the superuser is root (UID 0). You don't log in as root — you run…
+
 ### [PowerShell — references](references/powershell/README.md)
 
 My authored explainers for PowerShell. For curated external material (MS Learn, PSScriptAnalyzer, the Gallery), see ../../resources/powershell/. For reusable…
@@ -97,6 +110,11 @@ Curated external material for learning and looking up Git. My own explainers on 
 Curated external material for the GitHub platform. My own explainers (PRs, Actions, gh, rulesets, security) are in ../../references/github/; this catalog…
 
 
+### [Linux — resources](resources/linux/README.md)
+
+Curated external material for Linux as a dev/server environment. My own explainers are in ../../references/linux/; the shell language is in ../bash/.
+
+
 ### [PowerShell — resources](resources/powershell/README.md)
 
 Curated external material for PowerShell. My own explainers are in ../../references/powershell/; reusable templates in ../../snippets/powershell/.
@@ -125,6 +143,11 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 ### `snippets/github/`
 
 - [gh-aliases.sh](snippets/github/gh-aliases.sh) — gh CLI aliases + one-liners. Set the aliases with gh alias set (they persist
+
+### `snippets/linux/`
+
+- [systemd-service.service](snippets/linux/systemd-service.service) — systemd service unit template. Copy to /etc/systemd/system/myapp.service
+- [useful-one-liners.sh](snippets/linux/useful-one-liners.sh) — Curated Linux command-line one-liners worth keeping. Copy individually.
 
 ### `snippets/powershell/`
 
@@ -167,6 +190,11 @@ Drop-in GitHub repo files. These are stored here as reusable templates; copy the
 
 - [node.gitignore](configs/gitignore/node.gitignore) — Drop-in .gitignore for Node / TypeScript projects.
 
+### `configs/linux/`
+
+- [inputrc](configs/linux/inputrc) — Readline config. Copy to ~/.inputrc (affects bash and other readline programs).
+- [ssh-config](configs/linux/ssh-config) — SSH client config. Copy to ~/.ssh/config (chmod 600 ~/.ssh/config).
+
 ### `configs/powershell/`
 
 - [PSScriptAnalyzerSettings.psd1](configs/powershell/PSScriptAnalyzerSettings.psd1) — PSScriptAnalyzer settings. Copy to a project root as PSScriptAnalyzerSettings.psd1,
@@ -204,6 +232,10 @@ Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walk
 - [Checklist: reviewing a pull request](checklists/github/pr-review.md) — Walk this when reviewing someone else's PR (or self-reviewing before marking ready). Each item is yes/no. Authoring side:…
 - [Checklist: repository hardening](checklists/github/repo-hardening.md) — Walk this after creating a repo that others can see or contribute to (especially public). Each item is yes/no. Concepts:…
 
+### `checklists/linux/`
+
+- [Checklist: harden a new Linux server](checklists/linux/new-server-hardening.md) — Walk this when provisioning a Linux server that's reachable from a network. Each item is yes/no; blocking items are the baseline that stops the common…
+
 ### `checklists/powershell/`
 
 - [Checklist: before shipping a PowerShell script](checklists/powershell/script-review.md) — Walk this before committing or relying on a non-trivial PowerShell script. Each item is yes/no. Background in ../../references/powershell/.
@@ -230,6 +262,11 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 - [Playbook: create and harden a new GitHub repo](playbooks/github/set-up-new-repo.md) — Trigger: starting a new project and publishing it to GitHub. Est. time: 10–15 min. Pairs with the local-side ../../checklists/git/new-repo-setup.md and…
 - [Playbook: ship a release](playbooks/github/ship-a-release.md) — Trigger: a version is ready to publish. Est. time: 5–15 min. Tag mechanics: ../../references/git/tags-and-signing.md; the version-control side of undoing a bad…
 - [Playbook: sync a fork with upstream](playbooks/github/sync-a-fork.md) — Trigger: your fork has fallen behind the original repo and you want it current (before starting new work, or before opening a PR). Est. time: 1–5 min. Model:…
+
+### `playbooks/linux/`
+
+- [Playbook: diagnose high resource usage](playbooks/linux/diagnose-resource-usage.md) — Trigger: a Linux box is slow, out of memory, out of disk, or a process is pegging the CPU. Est. time: 5–20 min. Concepts:…
+- [Playbook: troubleshoot a failed systemd service](playbooks/linux/troubleshoot-a-service.md) — Trigger: a service won't start, keeps restarting, or isn't behaving. Est. time: 5–30 min. Concepts: ../../references/linux/systemd-and-services.md.
 
 ### `playbooks/powershell/`
 

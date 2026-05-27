@@ -1,0 +1,36 @@
+# systemd service unit template. Copy to /etc/systemd/system/myapp.service
+# (system) or ~/.config/systemd/user/myapp.service (user), then:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now myapp
+# Background: ../../references/linux/systemd-and-services.md
+
+[Unit]
+Description=My application
+# Start after the network is up; add other deps as needed.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# The user/group to run as (omit for user services). Avoid running as root.
+User=myapp
+Group=myapp
+WorkingDirectory=/opt/myapp
+# Use an absolute path; systemd does not use your shell's PATH.
+ExecStart=/opt/myapp/bin/server --port 8080
+# Optional env (or EnvironmentFile=/etc/myapp.env):
+Environment=NODE_ENV=production
+
+# Restart on failure with a small backoff.
+Restart=on-failure
+RestartSec=3
+
+# Basic hardening (tighten per app):
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/myapp
+
+[Install]
+# What `systemctl enable` hooks into (normal multi-user boot).
+WantedBy=multi-user.target

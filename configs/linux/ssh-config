@@ -1,0 +1,38 @@
+# SSH client config. Copy to ~/.ssh/config (chmod 600 ~/.ssh/config).
+# Lets you `ssh myserver` instead of long host/user/port/key strings, and sets
+# sane defaults. Works on Linux, macOS, WSL, and Git Bash / Windows OpenSSH.
+# Background: ../../references/linux/networking-basics.md
+
+# Defaults applied to all hosts (most specific match wins; put Host * last).
+Host *
+    # Reuse one connection for multiple sessions to the same host (faster).
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 10m
+    # Keep idle connections alive through NATs/firewalls.
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    # Prefer key auth; don't fall back to password prompts silently.
+    PreferredAuthentications publickey
+    AddKeysToAgent yes
+
+# A named host: `ssh web` connects as deploy@203.0.113.10 on port 2222 with a key.
+Host web
+    HostName 203.0.113.10
+    User deploy
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519
+
+# Jump through a bastion to reach a private host: `ssh db`
+Host db
+    HostName 10.0.1.5
+    User admin
+    ProxyJump web
+
+# A GitHub entry (separate key for git, if you use one):
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+# First run: mkdir -p ~/.ssh/sockets   (for the ControlPath above)

@@ -1,0 +1,30 @@
+# Readline config. Copy to ~/.inputrc (affects bash and other readline programs).
+# Reload in the current shell with: bind -f ~/.inputrc  (or open a new shell).
+# Readline is the line-editing library behind the bash prompt.
+
+# Case-insensitive tab completion.
+set completion-ignore-case on
+
+# Treat - and _ as equivalent when completing.
+set completion-map-case on
+
+# Show all completions at once instead of asking "display all N?".
+set completion-query-items 200
+
+# First Tab completes; show the list immediately on ambiguity (no double-Tab).
+set show-all-if-ambiguous on
+
+# Append a marker (/ for dirs, * for executables) to completions.
+set visible-stats on
+set mark-symlinked-directories on
+
+# Up/Down search history by the prefix already typed (huge time-saver).
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Don't ring the terminal bell; flash instead.
+set bell-style none
+
+# Show the common prefix of completions in color.
+set colored-completion-prefix on
+set colored-stats on
