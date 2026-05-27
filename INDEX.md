@@ -67,6 +67,18 @@ My authored explainers for Linux as a dev/server environment. The shell language
 - [Text-processing tools (grep, sed, awk, find, and friends)](references/linux/text-processing-tools.md) — The Unix philosophy is small tools that read text on stdin and write to stdout, composed with pipes. The core set — grep (search), sed (stream-edit), awk…
 - [Users, groups, and sudo](references/linux/users-sudo-and-groups.md) — Linux is multi-user. Each user has a UID, a primary group, and optional supplementary groups; the superuser is root (UID 0). You don't log in as root — you run…
 
+### [Node.js — references](references/node/README.md)
+
+My authored explainers for Node.js — the runtime, its module systems, and package management. The TypeScript layer and JavaScript-the-language are separate…
+
+- [Built-in modules (the standard library)](references/node/built-in-modules.md) — Node ships a substantial standard library — filesystem, paths, process/OS info, HTTP, streams, crypto, and more — importable with the node: prefix (import fs…
+- [The event loop and async execution](references/node/event-loop-and-async.md) — Node runs your JavaScript on a single thread with an event loop: synchronous code runs to completion, then queued callbacks run. I/O (files, network, timers)…
+- [Modules: CommonJS vs. ES Modules](references/node/modules-cjs-vs-esm.md) — Node has two module systems. CommonJS (CJS) — require()/module.exports, synchronous, the historical default. ES Modules (ESM) — import/export, the standard,…
+- [npm and dependencies](references/node/npm-and-dependencies.md) — npm installs the packages in package.json into nodemodules and records the exact resolved tree in package-lock.json. The two installs that matter: npm install…
+- [`package.json` field by field](references/node/package-json.md) — package.json is the manifest for a Node project — identity, dependencies, scripts, and how the package is consumed. Most fields are optional, but a handful are…
+- [Semantic versioning (semver)](references/node/semver.md) — A semver version is MAJOR.MINOR.PATCH: bump MAJOR for breaking changes, MINOR for backward-compatible features, PATCH for backward-compatible fixes. Dependency…
+- [Node versions and version managers](references/node/versions-and-managers.md) — Node has time-based releases: even-numbered majors become LTS (Long-Term Support) and are what you should run in production; odd majors are short-lived. A…
+
 ### [PowerShell — references](references/powershell/README.md)
 
 My authored explainers for PowerShell. For curated external material (MS Learn, PSScriptAnalyzer, the Gallery), see ../../resources/powershell/. For reusable…
@@ -115,6 +127,11 @@ Curated external material for the GitHub platform. My own explainers (PRs, Actio
 Curated external material for Linux as a dev/server environment. My own explainers are in ../../references/linux/; the shell language is in ../bash/.
 
 
+### [Node.js — resources](resources/node/README.md)
+
+Curated external material for Node.js. My own explainers are in ../../references/node/; TypeScript and JavaScript have their own catalogs in this cluster.
+
+
 ### [PowerShell — resources](resources/powershell/README.md)
 
 Curated external material for PowerShell. My own explainers are in ../../references/powershell/; reusable templates in ../../snippets/powershell/.
@@ -148,6 +165,11 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 
 - [systemd-service.service](snippets/linux/systemd-service.service) — systemd service unit template. Copy to /etc/systemd/system/myapp.service
 - [useful-one-liners.sh](snippets/linux/useful-one-liners.sh) — Curated Linux command-line one-liners worth keeping. Copy individually.
+
+### `snippets/node/`
+
+- [atomic-write.mjs](snippets/node/atomic-write.mjs) — Atomically write a file: write to a temp file in the same directory, then
+- [parse-args.mjs](snippets/node/parse-args.mjs) — CLI argument parsing with the BUILT-IN node:util parseArgs — no yargs/commander
 
 ### `snippets/powershell/`
 
@@ -195,6 +217,10 @@ Drop-in GitHub repo files. These are stored here as reusable templates; copy the
 - [inputrc](configs/linux/inputrc) — Readline config. Copy to ~/.inputrc (affects bash and other readline programs).
 - [ssh-config](configs/linux/ssh-config) — SSH client config. Copy to ~/.ssh/config (chmod 600 ~/.ssh/config).
 
+### `configs/npm/`
+
+- [npmrc](configs/npm/npmrc) — Sane .npmrc. Copy to a project root as .npmrc (project scope) or to
+
 ### `configs/powershell/`
 
 - [PSScriptAnalyzerSettings.psd1](configs/powershell/PSScriptAnalyzerSettings.psd1) — PSScriptAnalyzer settings. Copy to a project root as PSScriptAnalyzerSettings.psd1,
@@ -236,6 +262,10 @@ Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walk
 
 - [Checklist: harden a new Linux server](checklists/linux/new-server-hardening.md) — Walk this when provisioning a Linux server that's reachable from a network. Each item is yes/no; blocking items are the baseline that stops the common…
 
+### `checklists/node/`
+
+- [Checklist: before `npm publish`](checklists/node/publish-package.md) — Walk this before publishing a package to the npm registry. Each item is yes/no; a publish is hard to undo (unpublish is restricted), so treat it like a…
+
 ### `checklists/powershell/`
 
 - [Checklist: before shipping a PowerShell script](checklists/powershell/script-review.md) — Walk this before committing or relying on a non-trivial PowerShell script. Each item is yes/no. Background in ../../references/powershell/.
@@ -267,6 +297,10 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 
 - [Playbook: diagnose high resource usage](playbooks/linux/diagnose-resource-usage.md) — Trigger: a Linux box is slow, out of memory, out of disk, or a process is pegging the CPU. Est. time: 5–20 min. Concepts:…
 - [Playbook: troubleshoot a failed systemd service](playbooks/linux/troubleshoot-a-service.md) — Trigger: a service won't start, keeps restarting, or isn't behaving. Est. time: 5–30 min. Concepts: ../../references/linux/systemd-and-services.md.
+
+### `playbooks/node/`
+
+- [Playbook: troubleshoot npm dependency problems](playbooks/node/troubleshoot-dependencies.md) — Trigger: install fails, the wrong version is resolved, nodemodules is in a weird state, or "works on my machine" but not in CI. Est. time: 5–20 min. Concepts:…
 
 ### `playbooks/powershell/`
 
