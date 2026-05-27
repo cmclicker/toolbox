@@ -1,0 +1,26 @@
+# Sane .npmrc. Copy to a project root as `.npmrc` (project scope) or to
+# ~/.npmrc (per-user). Project-scope settings are committed and apply to everyone
+# working in the repo. Reference: ../../references/node/npm-and-dependencies.md
+
+# Pin exact versions on install (no ^ ranges). Best for APPLICATIONS, where you
+# want fully deterministic deps and deliberate upgrades. For a published LIBRARY,
+# leave this off so consumers get compatible-range deps. See semver.md.
+save-exact=true
+
+# Refuse to install if the local Node/npm doesn't satisfy package.json "engines".
+# Turns the advisory engines field into a hard gate.
+engine-strict=true
+
+# Don't print the funding message on every install (CI/log noise).
+fund=false
+
+# Keep audit out of the install path; run `npm audit` deliberately instead of
+# having every install hit the network for advisories.
+audit=false
+
+# Fail CI-style installs that would need to write the lockfile (use with `npm ci`
+# locally too). Uncomment to enforce a clean, committed lockfile everywhere:
+# package-lock=true
+
+# Example registry pin / scope routing (uncomment + edit if you use a private feed):
+# @your-scope:registry=https://npm.your-company.com/
