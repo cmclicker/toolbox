@@ -1,6 +1,6 @@
 # Checklist: before `git push`
 
-> Walk this before pushing a branch you intend others (or future-you) to pull. Each item is yes/no. Blocking items must pass.
+> Walk this before pushing a branch that you or anyone else will later pull. Each item is yes/no. Blocking items must pass.
 
 ## Blocking
 

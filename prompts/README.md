@@ -11,7 +11,7 @@ Examples:
 - `prompts/generate/readme-from-code.md` — "write a README for this project."
 - `prompts/refactor/extract-and-test.md` — drive a refactor + test pass.
 - `prompts/explain/eli-senior-dev.md` — explain a concept at the right depth.
-- `prompts/agent/repo-audit.md` — the prompt that kicked off *this* repo's audit.
+- `prompts/agent/repo-audit.md` — assess whether a repo is structured for its stated purpose.
 
 Each file is the text you'd literally paste/send, with variables marked `{{like-this}}`.
 

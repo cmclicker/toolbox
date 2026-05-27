@@ -4,7 +4,7 @@
 
 ## What lives here
 
-Files that are the whole config, not a fragment. The distinction from [snippets/](../snippets/) is completeness: if you can drop it into a project and the tool just works, it's a config.
+Files that are the whole config, not a fragment. The distinction from [snippets/](../snippets/) is completeness: if the tool reads the file as-is with no further editing, it's a config.
 
 Examples:
 - `configs/typescript/node-strict.json` — strict `tsconfig` for Node.

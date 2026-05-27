@@ -1,10 +1,10 @@
 # `checklists/`
 
-> Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walked top-to-bottom when forgetting a step is expensive.
+> Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walked top-to-bottom before a recurring task where a missed step is hard to undo after the fact.
 
 ## What lives here
 
-Short lists of discrete, verifiable items — for the recurring moments where skipping something hurts: before a push, before a release, before publishing a package, before calling a UI accessible.
+Short lists of discrete, verifiable items, for recurring tasks where a skipped step causes a problem the check would have caught: before a push, before a release, before publishing a package, before calling a UI accessible.
 
 Examples:
 - `checklists/git/pre-push.md` — before pushing: tests pass, no secrets, branch correct, commit message sane.
@@ -29,10 +29,10 @@ The test: **is each item a discrete yes/no verification?** Yes → checklist. If
 - Grouped by phase if there are stages.
 - Mark non-blocking items `(advisory)` or put them in a separate section.
 
-## Keeping them honest
+## Maintenance
 
-- **Items rot** — re-walk after tooling changes; cut stale items.
-- **Keep them short** — a 7-item list that always gets walked beats a 30-item one nobody finishes.
+- Re-walk a checklist after the underlying tooling changes; remove items that no longer apply.
+- Keep lists short. A 7-item list that gets completed every time catches more than a 30-item list that gets abandoned partway.
 
 ## Sharding
 

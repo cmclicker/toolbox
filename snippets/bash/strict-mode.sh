@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-# Bash "strict mode" header. Paste at the top of any non-trivial script.
-# Makes the shell fail loudly instead of limping on after an error.
+# Bash "strict mode" header. Paste directly below the shebang.
 #
-#   set -e          exit on any command that returns non-zero
-#   set -u          error on use of an unset variable (catches typos)
-#   set -o pipefail a pipeline fails if ANY stage fails, not just the last
-#   IFS=$'\n\t'     split words on newline/tab only, not spaces (safer loops)
+#   set -e          exit with the command's status the first time any command exits non-zero
+#   set -u          exit when an unset variable is referenced
+#   set -o pipefail a pipeline's exit status is the last non-zero stage, not just the final stage
+#   IFS=$'\n\t'     word-split unquoted expansions on newline and tab only, not space
 #
 # Caveats worth knowing:
 #   - `set -e` does NOT trigger inside `if`, `&&`, `||`, or `!` conditions —
@@ -16,8 +15,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Optional: print each command before running it (debugging).
+# Optional: print each command (after expansion) before executing it.
 # set -x
 
-# Optional: a trap that reports which line died.
+# Optional: on a non-zero exit under `set -e`, print the line number and status.
 trap 'echo "error: line $LINENO exited with status $?" >&2' ERR

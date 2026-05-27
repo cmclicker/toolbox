@@ -2,7 +2,7 @@
 
 > **Trigger:** a rebase finished (or is mid-conflict) and the history is wrong — lost commits, mangled conflict resolution, or commits in the wrong order. Est. time: 2–10 min.
 >
-> For the *why* behind reflog and reset, see [references/git/rebase-recovery.md](../../references/git/rebase-recovery.md). This is the do-it-now sequence.
+> For why reflog and reset work, see [references/git/rebase-recovery.md](../../references/git/rebase-recovery.md). This file is the ordered recovery procedure.
 
 ## Step 1 — Are you still mid-rebase?
 
@@ -45,5 +45,5 @@ Re-check `git log --oneline`. Good → **Done.**
 
 ## Notes
 
-- Nothing committed is ever lost to a rebase — only refs move. The reflog is the safety net.
+- A rebase moves refs without deleting committed objects; the reflog records the prior position.
 - The only unrecoverable loss is *uncommitted* work wiped by `reset --hard`. Commit or stash before risky operations.

@@ -1,6 +1,6 @@
-# Recovering from a bad rebase (and other "I lost commits" panics)
+# Recovering from a bad rebase and lost commits
 
-**TL;DR:** Your commits aren't gone. `git reflog` lists every position `HEAD` has pointed at, including the one right before the rebase that scared you. `git reset --hard HEAD@{n}` puts you back there.
+**TL;DR:** A rebase, reset, or amend moves refs; it does not delete committed objects. `git reflog` lists every position `HEAD` has held, including the one immediately before the rebase. `git reset --hard HEAD@{n}` moves the current branch back to that position.
 
 ## Why this works
 
@@ -26,13 +26,13 @@ git branch rescue HEAD@{5}      # park it on a new branch, decide later
 - **Rebase produced garbage / wrong conflict resolution.** During the rebase: `git rebase --abort`. After it finished: `git reset --hard ORIG_HEAD` (git stashes the pre-rebase tip in `ORIG_HEAD`).
 - **Hard reset to the wrong commit.** Same fix — `git reflog`, then reset back.
 - **Deleted a branch by mistake.** `git reflog` still has its tip; `git branch <name> <sha>` recreates it.
-- **`git commit --amend` ate a commit.** The pre-amend commit is in the reflog; cherry-pick or reset to it.
+- **`git commit --amend` replaced a commit.** The pre-amend commit is in the reflog; cherry-pick or reset to it.
 
 ## How I use it
 
-First move on *any* "where did my work go" moment is `git reflog`, before trying anything clever. Nothing in a normal workflow (rebase, reset, amend, bad merge) actually destroys committed work — it only moves refs. Reflog + `reset --hard`/`branch` undoes the ref move.
+Run `git reflog` first, before any other recovery command, whenever a committed change appears to be missing. Rebase, reset, amend, and merge move refs without deleting committed objects, so the prior state is reachable through a reflog entry; `reset --hard` or `git branch` against that entry restores it.
 
-The one real way to lose committed work: never having committed it. Uncommitted changes blown away by `reset --hard` or `checkout` are *not* in the reflog. Commit (or `git stash`) before risky operations.
+This does not recover *uncommitted* changes. `git reset --hard` and `git checkout` overwrite the working tree, and uncommitted work has no reflog entry. Commit or `git stash` before running either.
 
 ## Links
 

@@ -4,7 +4,7 @@
 
 ## What lives here
 
-Procedures with shape: "when X happens, do these steps in order; at step 3, depending on Y, branch." The canonical sequence *and* the reasoning, so you can follow it under pressure without re-thinking it.
+Procedures with shape: "when X happens, do these steps in order; at step 3, depending on Y, branch." Each records the sequence *and* the reasoning, so it can be followed without re-deriving the steps.
 
 Examples:
 - `playbooks/git/recover-from-bad-rebase.md` — reflog → identify good commit → reset → verify.
@@ -30,9 +30,9 @@ The test: **does it have judgment calls or branches?** Yes → playbook. Purely 
 4. Inline templates where the procedure produces an artifact (e.g. a post-mortem).
 5. A rough time estimate.
 
-## Keeping them honest
+## Maintenance
 
-After every real run, update the playbook with whatever was missing or wrong, and note when steps were last verified. A playbook step may invoke a checklist — link to it.
+After each real run, update the playbook with any step that was missing or wrong, and note the date the steps were last verified. A playbook step may invoke a checklist — link to it.
 
 ## Sharding
 
