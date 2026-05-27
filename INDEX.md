@@ -8,6 +8,19 @@
 
 My own "how X works + how I actually use it" writeups. Read to learn or refresh — not copied wholesale. For curated external learning material (docs, courses,…
 
+### [Bash — references](references/bash/README.md)
+
+My authored explainers for Bash scripting and the Unix shell. For curated external Bash material (the manual, ShellCheck, Greg's Wiki), see…
+
+- [Arrays](references/bash/arrays.md) — Bash has indexed arrays (arr=(a b c)) and associative arrays (declare -A m). They're the correct way to hold lists and maps — far safer than space-separated…
+- [Error handling: exit codes, `set -euo pipefail`, traps](references/bash/error-handling.md) — Every command returns an exit status ($?): 0 = success, non-zero = failure. By default Bash ignores failures and keeps going. The strict-mode trio — set -e…
+- [Functions](references/bash/functions.md) — A Bash function groups commands under a name. Arguments arrive as $1, $2, …, "$@" — there's no parameter list in the definition. Declare variables local or…
+- [Parameter expansion](references/bash/parameter-expansion.md) — Bash can transform a variable's value as it expands it — defaults, substring removal, search/replace, length, case — without calling external tools like…
+- [Quoting and word splitting](references/bash/quoting-and-word-splitting.md) — Most Bash bugs come from unquoted expansions. After Bash substitutes a variable or command output, it splits the result on whitespace (IFS) and then expands…
+- [Redirection, pipes, and here-docs](references/bash/redirection-and-pipes.md) — Every process has three standard streams: stdin (0), stdout (1), stderr (2). Redirection wires these to files or each other; pipes wire one command's stdout to…
+- [Shell startup files: `.bashrc` vs `.bash_profile` vs `.profile`](references/bash/shell-startup-files.md) — Which file Bash reads depends on whether the shell is a login shell and whether it's interactive. Interactive non-login shells read ~/.bashrc; login shells…
+- [Tests and conditionals: `[[ ]]`, `[ ]`, `if`, `case`](references/bash/test-and-conditionals.md) — In Bash, prefer [[ ... ]] over the older [ ... ] (a.k.a. test): [[ ]] doesn't word-split or glob its operands, supports &&/||/</> without escaping, and adds =~…
+
 ### [Git — references](references/git/README.md)
 
 My authored explainers on how Git works and how I use it. For curated external material (Pro Git, interactive learners, cheatsheets), see ../../resources/git/.…
@@ -45,6 +58,11 @@ My authored explainers for the GitHub platform — the layer on top of Git. For 
 
 Curated, annotated links to external learning material — the websites, docs, courses, cheatsheets, and tools worth going to for a topic. The value here is the…
 
+### [Bash — resources](resources/bash/README.md)
+
+Curated external material for Bash and shell scripting. My own explainers are in ../../references/bash/; reusable templates in ../../snippets/bash/.
+
+
 ### [Git — resources](resources/git/README.md)
 
 Curated external material for learning and looking up Git. My own explainers on Git internals (objects/refs, reset modes, merge vs. rebase, line endings) are…
@@ -61,7 +79,9 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 
 ### `snippets/bash/`
 
+- [getopts-template.sh](snippets/bash/getopts-template.sh) — Argument-parsing template using the built-in getopts (short options).
 - [strict-mode.sh](snippets/bash/strict-mode.sh) — Bash "strict mode" header. Paste directly below the shebang.
+- [tempdir-cleanup.sh](snippets/bash/tempdir-cleanup.sh) — Create a temp directory that is ALWAYS cleaned up, however the script exits
 
 ### `snippets/git/`
 
@@ -75,6 +95,10 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 ## `configs/`
 
 Complete, drop-in tool configs. A file here is a working config for some tool — copy it in or extends it, no further editing required.
+
+### `configs/bash/`
+
+- [bashrc](configs/bash/bashrc) — Starter ~/.bashrc — sane interactive defaults. Copy in, or source pieces.
 
 ### `configs/git/`
 
@@ -111,6 +135,10 @@ Reusable LLM / agent prompts and instructions. The actual text you'd send to a m
 
 Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walked top-to-bottom before a recurring task where a missed step is hard to undo…
 
+### `checklists/bash/`
+
+- [Checklist: before shipping a Bash script](checklists/bash/script-review.md) — Walk this before committing or relying on a non-trivial Bash script. Each item is yes/no. Background lives in ../../references/bash/.
+
 ### `checklists/git/`
 
 - [Checklist: before rewriting published history](checklists/git/before-rewriting-history.md) — Walk this before any push --force / push --force-with-lease, or any rebase/amend/filter-repo whose result you'll push to a shared branch. Rewriting history…
@@ -125,6 +153,10 @@ Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walk
 ## `playbooks/`
 
 Multi-step procedures with branches and judgment calls. Narrative shape — distinct from a checklist, which is pure yes/no verification.
+
+### `playbooks/bash/`
+
+- [Playbook: debug a Bash script](playbooks/bash/debug-a-script.md) — Trigger: a script misbehaves — wrong output, silent failure, or it stops unexpectedly. Est. time: 5–30 min. Concepts: ../../references/bash/error-handling.md,…
 
 ### `playbooks/git/`
 
