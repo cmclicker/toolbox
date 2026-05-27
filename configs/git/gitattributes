@@ -1,0 +1,49 @@
+# Drop-in .gitattributes. Copy to a project root as `.gitattributes`, commit it,
+# then run `git add --renormalize . && git commit` once to normalize existing files.
+# Background: ../../references/git/line-endings.md
+
+# --- Line endings -----------------------------------------------------------
+# Detect text vs binary; store all text with LF in the repository regardless of
+# each contributor's core.autocrlf. This is the portable, version-controlled rule.
+* text=auto
+
+# Files that must keep a specific working-tree ending regardless of platform:
+*.sh    text eol=lf
+*.bash  text eol=lf
+*.zsh   text eol=lf
+*.fish  text eol=lf
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# --- Explicit binary (no eol conversion, no textual diff) -------------------
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.tar   binary
+*.7z    binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.mp4   binary
+*.mov   binary
+*.mp3   binary
+*.wav   binary
+
+# --- Diff behavior ----------------------------------------------------------
+# Use language-aware hunk headers in diffs for common languages.
+*.md    diff=markdown
+*.json  diff=json
+
+# Collapse lockfiles in diffs/PRs (still tracked, just not expanded by default).
+package-lock.json   linguist-generated=true -diff
+pnpm-lock.yaml      linguist-generated=true -diff
+yarn.lock           linguist-generated=true -diff

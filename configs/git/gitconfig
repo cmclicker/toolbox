@@ -1,0 +1,80 @@
+# Drop-in global Git config. Review every value, then either copy to
+# ~/.gitconfig (Windows: %USERPROFILE%\.gitconfig) or include it from yours:
+#   git config --global include.path ~/path/to/this/gitconfig
+#
+# Set identity separately so it isn't committed to a shared repo:
+#   git config --global user.name  "Your Name"
+#   git config --global user.email "you@example.com"
+#
+# Rationale for the non-obvious settings is in comments and in
+# ../../references/git/ (merge-vs-rebase.md, line-endings.md).
+
+[init]
+	# New repos default to a `main` branch instead of `master`.
+	defaultBranch = main
+
+[pull]
+	# Refuse to integrate on `pull` unless it's a fast-forward; otherwise stop
+	# and let you choose merge or rebase deliberately. Most predictable default.
+	# See ../../references/git/merge-vs-rebase.md
+	ff = only
+
+[push]
+	# `git push` with no arguments pushes the current branch to its upstream of
+	# the same name, and nothing else.
+	default = simple
+	# Auto-create the upstream ref on first push of a new branch.
+	autoSetupRemote = true
+	# Push annotated tags that point at commits being pushed.
+	followTags = true
+
+[fetch]
+	# Delete remote-tracking refs that no longer exist on the remote.
+	prune = true
+	pruneTags = true
+
+[rebase]
+	# Auto-stash dirty changes before a rebase and re-apply after.
+	autoStash = true
+	# Honor `fixup!`/`squash!` commits automatically in interactive rebase.
+	autosquash = true
+
+[merge]
+	# Show the common ancestor in conflict markers (||||||| section), which makes
+	# resolving 3-way conflicts far easier than the default 2-way markers.
+	conflictStyle = zdiff3
+
+[diff]
+	# Detect file renames and (with copies) copies, for clearer diffs.
+	renames = copies
+	# Use intent-revealing prefixes (i/ w/ c/) instead of a/ b/.
+	mnemonicPrefix = true
+	# Better word-level highlighting within changed lines.
+	colorMoved = default
+
+[rerere]
+	# Record how you resolve a conflict and replay it if the same conflict recurs
+	# (e.g. across repeated rebases). "reuse recorded resolution".
+	enabled = true
+
+[column]
+	# Multi-column output for branch/status listings when the terminal is wide.
+	ui = auto
+
+[branch]
+	# List branches by most-recent-commit instead of alphabetically.
+	sort = -committerdate
+
+[tag]
+	# Sort tags by version semantics (v1.2.10 after v1.2.9), not lexically.
+	sort = version:refname
+
+[core]
+	# Line-ending policy belongs in each repo's committed .gitattributes, not here.
+	# See ../../references/git/line-endings.md and ../../configs/git/gitattributes.
+	# Global ignore file for machine/editor artifacts:
+	excludesfile = ~/.config/git/ignore
+
+[help]
+	# Auto-correct an obvious typo'd command after a short pause (deciseconds).
+	autocorrect = prompt

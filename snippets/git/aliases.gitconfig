@@ -1,0 +1,58 @@
+# Git aliases. Paste into the [alias] section of your global Git config
+# (~/.gitconfig), or keep in a separate file included via:
+#   git config --global include.path ~/path/to/aliases.gitconfig
+# Each is invoked as `git <alias>` (e.g. `git lg`, `git st`).
+
+[alias]
+	# --- Status / inspection ---
+	st = status --short --branch
+	# One-line graph log with refs, colors, and relative dates.
+	lg = log --graph --abbrev-commit --decorate --date=relative \
+	     --format=format:'%C(bold blue)%h%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset) %C(dim)(%ar)%C(reset)'
+	# Full graph of all branches.
+	lga = lg --all
+	# What changed in the last commit.
+	last = show --stat HEAD
+
+	# --- Staging ---
+	# Stage interactively in hunks.
+	ap = add --patch
+	# Unstage a path (mixed reset of the index only).
+	unstage = restore --staged
+	# Discard working-tree edits to a path.
+	discard = restore
+
+	# --- Commit / amend ---
+	ci = commit
+	# Amend without changing the message (e.g. add a forgotten file).
+	amend = commit --amend --no-edit
+	# Quick fixup commit targeting another commit (works with rebase --autosquash).
+	fixup = commit --fixup
+
+	# --- Branches ---
+	co = checkout
+	sw = switch
+	# New branch and switch to it.
+	swc = switch --create
+	# Branches by most recent commit, with last-commit info.
+	br = branch --sort=-committerdate --format='%(HEAD) %(color:bold blue)%(refname:short)%(color:reset) - %(contents:subject) (%(committerdate:relative))'
+
+	# --- History surgery (local only — see references/git/merge-vs-rebase.md) ---
+	# Interactive rebase over the last N commits: `git rb 3`.
+	rb = "!f() { git rebase -i HEAD~${1:-1}; }; f"
+	# Undo the last commit, keep changes staged.
+	uncommit = reset --soft HEAD~1
+	# Move branch back without touching files (mixed). `git back 2`.
+	back = "!f() { git reset HEAD~${1:-1}; }; f"
+
+	# --- Sync ---
+	# Fetch everything and prune deleted remote branches.
+	up = fetch --all --prune
+	# Show commits on the upstream you haven't merged yet.
+	incoming = "!git fetch -q && git log --oneline ..@{u}"
+	# Show local commits not yet pushed.
+	outgoing = "!git fetch -q && git log --oneline @{u}.."
+
+	# --- Recovery ---
+	# Reflog with dates — first stop when something looks lost.
+	rl = reflog --date=iso

@@ -1,0 +1,35 @@
+# Global gitignore — patterns to ignore in EVERY repo on this machine.
+# These are machine/editor artifacts that should never be a project's concern.
+#
+# Install (once per machine):
+#   git config --global core.excludesfile ~/.config/git/ignore
+# then copy this file to ~/.config/git/ignore  (Windows: %USERPROFILE%\.config\git\ignore)
+#
+# Keep PROJECT-specific ignores (node_modules/, dist/, .env) in the project's own
+# .gitignore instead — those belong with the project, not your machine.
+
+# --- OS ---------------------------------------------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Linux
+*~
+.directory
+.Trash-*
+
+# --- Editors / IDEs ---------------------------------------------------------
+*.swp
+*.swo
+*.sublime-workspace
+# Leave .vscode/ and .idea/ to per-project .gitignore — teams sometimes commit
+# shared settings, so a global ignore is too blunt.
+
+# --- Misc machine artifacts -------------------------------------------------
+*.log
+.cache/
