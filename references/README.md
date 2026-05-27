@@ -1,6 +1,6 @@
 # `references/`
 
-> Notes, cheatsheets, and "how X works + how I actually use it" writeups. Read to learn or refresh — not copied wholesale.
+> My own "how X works + how I actually use it" writeups. Read to learn or refresh — not copied wholesale. For curated *external* learning material (docs, courses, cheatsheets, tools), see [resources/](../resources/).
 
 ## What lives here
 
@@ -39,4 +39,5 @@ By tool or domain, created lazily: `references/git/`, `references/node/`, `refer
 ## See also
 
 - [ARTIFACTS.md](../ARTIFACTS.md) — the taxonomy and decision tree.
+- [resources/](../resources/) — curated external material on the same topics (a reference's "Links" feed it).
 - [snippets/](../snippets/) — when the thing is code to paste, not prose to read.

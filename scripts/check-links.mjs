@@ -28,6 +28,15 @@ async function collectMarkdown(dir) {
 // Matches [text](target) — captures the target.
 const LINK_RE = /\[[^\]]*\]\(([^)]+)\)/g;
 
+// Markdown does not render links inside code, so neither do we. Strip fenced
+// code blocks and inline code spans before scanning, so docs that show link
+// *syntax* (e.g. `[Title](url)`) aren't mistaken for real links.
+function stripCode(md) {
+  return md
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`\n]*`/g, "");
+}
+
 function isExternal(target) {
   return /^(https?:|mailto:|tel:|#)/.test(target);
 }
@@ -45,7 +54,7 @@ const files = await collectMarkdown(ROOT);
 const problems = [];
 
 for (const file of files) {
-  const content = await readFile(file, "utf8");
+  const content = stripCode(await readFile(file, "utf8"));
   for (const match of content.matchAll(LINK_RE)) {
     let target = match[1].trim();
     if (!target || isExternal(target)) continue;

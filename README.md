@@ -10,7 +10,8 @@ Each folder holds one **kind** of artifact. The full taxonomy — what goes wher
 
 | Folder | What it holds | Shape |
 |---|---|---|
-| [references/](references/) | Notes, cheatsheets, "how X works + how I use it" | Read to learn |
+| [references/](references/) | My own "how X works + how I use it" explainers | Read to learn |
+| [resources/](resources/) | Curated, annotated links to external learning material | Go look it up |
 | [snippets/](snippets/) | Small copy-and-adapt code/config fragments | Paste & tweak |
 | [configs/](configs/) | Complete drop-in tool configs (eslint, tsconfig, etc.) | Use as-is |
 | [prompts/](prompts/) | Reusable LLM / agent prompts and instructions | Send to a model |

@@ -32,6 +32,7 @@ nav:
   - Home: README.md
   - Taxonomy: ARTIFACTS.md
   - References: references/README.md
+  - Resources: resources/README.md
   - Snippets: snippets/README.md
   - Configs: configs/README.md
   - Prompts: prompts/README.md

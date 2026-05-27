@@ -2,11 +2,12 @@
 
 > The one rule this repo enforces: **every file has exactly one right home.** This document is the map and the decision procedure. When you're unsure where something goes, the tree below answers it. Every folder `README.md` links back here.
 
-## The seven kinds
+## The eight kinds
 
 | Kind | Folder | One-line test |
 |---|---|---|
-| Reference | [references/](references/) | Explains understanding. You read it to learn or refresh. |
+| Reference | [references/](references/) | My *own* written explanation of how something works. |
+| Resource | [resources/](resources/) | A curated, annotated list of *external* material to learn from or look up. |
 | Snippet | [snippets/](snippets/) | A small fragment you paste into a project and adapt. |
 | Config | [configs/](configs/) | A *complete* tool config, usable with no further editing. |
 | Prompt | [prompts/](prompts/) | Text you'd literally send to an LLM / agent. |
@@ -25,7 +26,9 @@ Ask these in order; stop at the first yes.
 5. **Is it code/config you'd paste and adapt?**
    - It's a *complete* drop-in config for a tool (needs no edits) → `configs/`
    - It's a *fragment* you paste and modify → `snippets/`
-6. **Otherwise — does it explain how something works or how I use it?** → `references/`
+6. **Is it about a topic — understanding it or finding material on it?**
+   - A curated list of *external* links/materials (docs, courses, cheatsheets, tools) → `resources/`
+   - My *own* written explanation of how it works or how I use it → `references/`
 
 ## The distinctions that actually trip people up
 
@@ -33,6 +36,7 @@ Ask these in order; stop at the first yes.
 - **Checklist vs. playbook** — *shape*. Pure binary verifications with no branching → `checklists/`. Anything with "if A do X, else do Y" or steps needing judgment → `playbooks/`.
 - **Reference vs. checklist/playbook** — *intent*. A reference explains so you understand; a checklist/playbook drives an action you perform.
 - **Prompt vs. reference** — a prompt is sent to a model; a reference (even one *about* prompting) is read by a human.
+- **Reference vs. resource** — *authorship*. A reference is content I wrote (my explanation, my distillation). A resource points at someone else's material (an annotated link). A reference may *cite* resources in a "Links" section; a resource entry is *nothing but* curated, annotated pointers. If the value is the prose, it's a reference; if the value is the curation, it's a resource.
 
 ## Sharding
 
