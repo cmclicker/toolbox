@@ -47,10 +47,10 @@ git push --force-with-lease
 A revert does **not** remove the content from history — the secret/file is still in old commits. This is a separate, heavier procedure:
 
 1. Treat any pushed secret as compromised: **rotate it now** (revoke the key/token), regardless of cleanup.
-2. Rewrite history to purge the object with [`git filter-repo`](https://github.com/newren/git-filter-repo) (not the deprecated `filter-branch`).
+2. Rewrite history to purge the object with `git filter-repo` (not the deprecated `filter-branch`).
 3. Force-push the rewritten history and have all collaborators re-clone; old clones and any forks still contain it.
 
-Because this rewrites shared history and invalidates every clone, it's a coordinated event, not a quick fix. Rotating the secret is the part that actually limits exposure.
+Because this rewrites shared history and invalidates every clone, it's a coordinated event, not a quick fix. Rotating the secret is the part that actually limits exposure. Full procedure: [purge-a-secret-from-history.md](purge-a-secret-from-history.md).
 
 ## Decision summary
 

@@ -1,0 +1,18 @@
+# Commit message template. Install per-repo or globally:
+#   git config [--global] commit.template ~/path/to/gitmessage
+# Git pre-fills the editor with this on `git commit` (lines starting with the
+# comment char are stripped). Follows Conventional Commits:
+# https://www.conventionalcommits.org
+#
+# Subject line below: <type>(<scope>): <summary>   (<=50 chars, imperative mood)
+#   types: feat fix docs style refactor perf test build ci chore revert
+#   scope: optional area, e.g. (auth), (api), (deps)
+
+
+# --- Body (wrap at 72 cols). Explain WHAT and WHY, not how. -----------------
+
+
+# --- Footer -----------------------------------------------------------------
+# Breaking change:  BREAKING CHANGE: <what broke and the migration>
+# Issues:           Closes #123, Refs #456
+# Co-author:        Co-Authored-By: Name <email>
