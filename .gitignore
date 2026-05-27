@@ -1,9 +1,6 @@
 # Dependencies (only present if a script/site tool needs them)
 node_modules/
 
-# MkDocs site build output
-site/
-
 # OS cruft
 Thumbs.db
 ehthumbs.db

@@ -2,7 +2,7 @@
 
 > A personal, product-agnostic toolbox: organized, validated, reusable dev assets I reach for across projects — snippets, configs, references, prompts, checklists, and playbooks.
 
-This repo is **content, not a product.** Nothing here gets `npm install`ed or imported. You read it, copy out of it, or point a tool/agent at it. It's Markdown-first so it renders on GitHub and in any editor, and it's structured so it can also be published as a browsable site (see [Publishing as a site](#publishing-as-a-site)).
+This repo is **content, not a product.** Nothing here gets `npm install`ed or imported. You read it, copy out of it, or point a tool/agent at it. It's plain Markdown, browsed directly on GitHub (or in any editor) — every folder has a `README.md` index, and GitHub renders the prose and the raw config/snippet files without any build step.
 
 ## The folders
 
@@ -17,7 +17,7 @@ Each folder holds one **kind** of artifact. The full taxonomy — what goes wher
 | [prompts/](prompts/) | Reusable LLM / agent prompts and instructions | Send to a model |
 | [checklists/](checklists/) | Binary "before-X-do-these" verification lists | Walk top-to-bottom |
 | [playbooks/](playbooks/) | Multi-step procedures with branches & judgment | Follow a process |
-| [scripts/](scripts/) | Repo automation (validation, site build) | Run from root |
+| [scripts/](scripts/) | Repo automation (link validation) | Run from root |
 
 ## How to use it
 
@@ -38,18 +38,6 @@ This repo is meant to stay trustworthy, so it validates itself:
 - CI runs the same check on every push (see [.github/workflows/validate.yml](.github/workflows/validate.yml)).
 
 Run it locally before committing: `npm run check` (or `node scripts/check-links.mjs`).
-
-## Publishing as a site
-
-Markdown is the source of truth. To browse it as an HTML site with search, an optional [MkDocs](https://www.mkdocs.org/) config is included:
-
-```bash
-pip install mkdocs-material
-mkdocs serve     # local preview at http://127.0.0.1:8000
-mkdocs gh-deploy # publish to GitHub Pages
-```
-
-The site is purely a view over the same files — no content is duplicated. If you never want a site, ignore `mkdocs.yml`; the repo works fine as plain Markdown.
 
 ## License
 
