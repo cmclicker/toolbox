@@ -5,7 +5,8 @@
   "description": "Personal, product-agnostic toolbox of reusable dev assets: snippets, configs, references, prompts, checklists, playbooks.",
   "type": "module",
   "scripts": {
-    "check": "node scripts/check-links.mjs"
+    "check": "node scripts/check-links.mjs && node scripts/generate-index.mjs check",
+    "index": "node scripts/generate-index.mjs"
   },
   "license": "MIT",
   "author": "Cody Moore"

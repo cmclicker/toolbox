@@ -4,6 +4,8 @@
 
 This repo is **content, not a product.** Nothing here gets `npm install`ed or imported. You read it, copy out of it, or point a tool/agent at it. It's plain Markdown, browsed directly on GitHub (or in any editor) — every folder has a `README.md` index, and GitHub renders the prose and the raw config/snippet files without any build step.
 
+**Browse everything:** [INDEX.md](INDEX.md) — an auto-generated map of every artifact, grouped and linked, one click from here. (Also: press `t` in the repo on GitHub to fuzzy-find any file by name.)
+
 ## The folders
 
 Each folder holds one **kind** of artifact. The full taxonomy — what goes where and the test for deciding — lives in [ARTIFACTS.md](ARTIFACTS.md). Quick map:
@@ -35,9 +37,10 @@ Sharded by tool or language as content accumulates. Active areas reflect what I 
 This repo is meant to stay trustworthy, so it validates itself:
 
 - `node scripts/check-links.mjs` — fails if any internal Markdown link points at a missing file.
-- CI runs the same check on every push (see [.github/workflows/validate.yml](.github/workflows/validate.yml)).
+- `node scripts/generate-index.mjs check` — fails if [INDEX.md](INDEX.md) has drifted from the file tree (regenerate with `npm run index`).
+- CI runs both on every push via `npm run check` (see [.github/workflows/validate.yml](.github/workflows/validate.yml)).
 
-Run it locally before committing: `npm run check` (or `node scripts/check-links.mjs`).
+Run before committing: `npm run check`. After adding or renaming a file, run `npm run index` to refresh the map.
 
 ## License
 
