@@ -1,0 +1,37 @@
+# Starter ~/.bashrc — sane interactive defaults. Copy in, or source pieces.
+# Interactive (non-login) config: aliases, prompt, options, completion.
+# Export-worthy env (PATH, EDITOR) belongs in ~/.bash_profile instead.
+# Background: ../../references/bash/shell-startup-files.md
+
+# Only run for interactive shells (scripts shouldn't load this).
+case $- in *i*) ;; *) return ;; esac
+
+# --- History -----------------------------------------------------------------
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth          # drop duplicates and lines starting with a space
+shopt -s histappend             # append across sessions instead of overwriting
+
+# --- Shell options -----------------------------------------------------------
+shopt -s checkwinsize           # keep LINES/COLUMNS correct after resize
+shopt -s globstar 2>/dev/null   # ** matches across directories
+shopt -s nocaseglob             # case-insensitive globbing
+
+# --- Prompt: user@host:cwd (git branch) $ -----------------------------------
+__git_branch() { git branch --show-current 2>/dev/null | sed 's/.*/ (&)/'; }
+PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[33m\]$(__git_branch)\[\e[0m\]\$ '
+
+# --- Aliases -----------------------------------------------------------------
+alias ll='ls -lhA --color=auto'
+alias la='ls -A --color=auto'
+alias grep='grep --color=auto'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gs='git status -sb'
+alias gl='git log --oneline --graph --decorate -20'
+
+# --- Completion (if available) ----------------------------------------------
+[ -f /etc/bash_completion ] && . /etc/bash_completion
+
+# Machine-local overrides, not tracked anywhere:
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local
