@@ -1,0 +1,28 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "_comment": "Starter dev-machine package list. Install with: winget import -i winget-packages.json --accept-package-agreements --accept-source-agreements. Remove what you don't want; add with `winget search`/`winget export`. Reference: ../../references/windows/winget-and-package-management.md",
+  "CreationDate": "2026-05-27",
+  "Sources": [
+    {
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      },
+      "Packages": [
+        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "GitHub.cli" },
+        { "PackageIdentifier": "Microsoft.PowerShell" },
+        { "PackageIdentifier": "Microsoft.WindowsTerminal" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "OpenJS.NodeJS.LTS" },
+        { "PackageIdentifier": "Python.Python.3.12" },
+        { "PackageIdentifier": "Microsoft.OpenJDK.21" },
+        { "PackageIdentifier": "Docker.DockerDesktop" },
+        { "PackageIdentifier": "Microsoft.PowerToys" }
+      ]
+    }
+  ],
+  "WinGetVersion": "1.28"
+}

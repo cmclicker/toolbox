@@ -1,0 +1,24 @@
+# Global WSL 2 settings. Copy to %USERPROFILE%\.wslconfig (applies to all WSL 2
+# distros). Run `wsl --shutdown` after editing for changes to take effect.
+# Reference: ../../references/windows/wsl.md
+#
+# WSL 2 runs a VM that, by default, can claim a large share of RAM. These caps
+# keep it from starving Windows. Tune to your machine (these suit ~16GB+).
+
+[wsl2]
+# Max memory the WSL 2 VM may use (it reclaims lazily; this is the ceiling).
+memory=8GB
+
+# Logical processors available to the VM.
+processors=4
+
+# Swap file size (0 to disable).
+swap=2GB
+
+# Mirrored networking (Windows 11 / recent WSL): makes localhost and VPNs work
+# more seamlessly between Windows and the distro. Comment out on older WSL.
+networkingMode=mirrored
+
+[experimental]
+# Return freed memory in the VM back to Windows automatically.
+autoMemoryReclaim=gradual
