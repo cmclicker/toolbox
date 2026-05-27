@@ -1,0 +1,11 @@
+# Issue-template chooser settings. Copy to `.github/ISSUE_TEMPLATE/config.yml`.
+# Controls the "New issue" picker that lists the templates above.
+
+# false = users must pick a template (or a contact link); no blank issues.
+blank_issues_enabled: false
+
+# Optional links shown alongside the templates in the picker.
+contact_links:
+  - name: Question / discussion
+    url: https://github.com/OWNER/REPO/discussions
+    about: Ask questions and discuss ideas here instead of opening an issue.

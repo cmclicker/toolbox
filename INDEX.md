@@ -30,6 +30,17 @@ My authored explainers on how Git works and how I use it. For curated external m
 - [Tags, releases, and signing](references/git/tags-and-signing.md) — A tag is a fixed name for a specific commit, used to mark releases (v1.4.0). Prefer annotated tags (-a) over lightweight ones for releases — they're real…
 - [`git worktree` — multiple working trees, one repo](references/git/worktrees.md) — git worktree lets one repository have several working directories checked out at once, each on a different branch, all sharing the same .git object store. It's…
 
+### [GitHub — references](references/github/README.md)
+
+My authored explainers for the GitHub platform — the layer on top of Git. For Git itself (commits, branches, rebase, history) see ../git/. For curated external…
+
+- [GitHub Actions concepts](references/github/actions-concepts.md) — GitHub Actions runs automated workflows in response to repo events. A workflow (a YAML file in .github/workflows/) is triggered by an event (push, pullrequest,…
+- [Branch protection and rulesets](references/github/branch-protection-and-rulesets.md) — Branch protection enforces rules on important branches (main) that cannot be bypassed locally — require PRs, require passing checks, require reviews, block…
+- [Forks and upstream (contributing to others' repos)](references/github/forks-and-upstream.md) — A fork is your own server-side copy of someone else's repo. The standard open-source contribution flow is fork → clone your fork → branch → push to your fork →…
+- [The `gh` CLI](references/github/gh-cli.md) — gh is GitHub's official command-line tool — it does from the terminal what you'd otherwise click through the web UI: PRs, issues, releases, runs, repo…
+- [Pull requests and review](references/github/pull-requests.md) — A pull request proposes merging one branch into another, with review, discussion, and CI attached. Open it early as a draft to get CI running; mark ready when…
+- [Repository security features](references/github/repo-security.md) — GitHub provides several built-in security layers: secret scanning + push protection (blocks commits containing known credential formats), Dependabot (alerts +…
+
 ## `resources/`
 
 Curated, annotated links to external learning material — the websites, docs, courses, cheatsheets, and tools worth going to for a topic. The value here is the…
@@ -37,6 +48,11 @@ Curated, annotated links to external learning material — the websites, docs, c
 ### [Git — resources](resources/git/README.md)
 
 Curated external material for learning and looking up Git. My own explainers on Git internals (objects/refs, reset modes, merge vs. rebase, line endings) are…
+
+
+### [GitHub — resources](resources/github/README.md)
+
+Curated external material for the GitHub platform. My own explainers (PRs, Actions, gh, rulesets, security) are in ../../references/github/; this catalog…
 
 
 ## `snippets/`
@@ -52,6 +68,10 @@ Small, copy-and-adapt code/config fragments — too small to be a project, not c
 - [aliases.gitconfig](snippets/git/aliases.gitconfig) — Git aliases. Paste into the [alias] section of your global Git config
 - [pre-commit.sh](snippets/git/hooks/pre-commit.sh) — Sample pre-commit hook: fast checks that run before each commit.
 
+### `snippets/github/`
+
+- [gh-aliases.sh](snippets/github/gh-aliases.sh) — gh CLI aliases + one-liners. Set the aliases with gh alias set (they persist
+
 ## `configs/`
 
 Complete, drop-in tool configs. A file here is a working config for some tool — copy it in or extends it, no further editing required.
@@ -62,6 +82,18 @@ Complete, drop-in tool configs. A file here is a working config for some tool �
 - [gitconfig](configs/git/gitconfig) — Drop-in global Git config. Review every value, then either copy to
 - [gitmessage](configs/git/gitmessage) — Commit message template. Install per-repo or globally:
 - [global-gitignore](configs/git/global-gitignore) — Global gitignore — patterns to ignore in EVERY repo on this machine.
+
+### [`configs/github/`](configs/github/README.md)
+
+Drop-in GitHub repo files. These are stored here as reusable templates; copy them into a real project at the paths below (GitHub only acts on them when they…
+
+- [CODEOWNERS](configs/github/CODEOWNERS) — CODEOWNERS. Copy to .github/CODEOWNERS (or the repo root).
+- [bug_report.md](configs/github/ISSUE_TEMPLATE/bug_report.md)
+- [config.yml](configs/github/ISSUE_TEMPLATE/config.yml) — Issue-template chooser settings. Copy to .github/ISSUETEMPLATE/config.yml.
+- [feature_request.md](configs/github/ISSUE_TEMPLATE/feature_request.md)
+- [dependabot.yml](configs/github/dependabot.yml) — Dependabot config. Copy to .github/dependabot.yml.
+- [pull_request_template.md](configs/github/pull_request_template.md)
+- [node-ci.yml](configs/github/workflows/node-ci.yml) — Node CI workflow. Copy to .github/workflows/ci.yml in a Node project.
 
 ### `configs/gitignore/`
 
@@ -85,6 +117,11 @@ Binary "before-X-do-these" verification lists. Each item is a yes/no check. Walk
 - [Checklist: new repository setup](checklists/git/new-repo-setup.md) — Walk this when creating a new repository, before the first push. Each item is yes/no. Reusable configs referenced below live in ../../configs/git/.
 - [Checklist: before `git push`](checklists/git/pre-push.md) — Walk this before pushing a branch that you or anyone else will later pull. Each item is yes/no. Blocking items must pass.
 
+### `checklists/github/`
+
+- [Checklist: reviewing a pull request](checklists/github/pr-review.md) — Walk this when reviewing someone else's PR (or self-reviewing before marking ready). Each item is yes/no. Authoring side:…
+- [Checklist: repository hardening](checklists/github/repo-hardening.md) — Walk this after creating a repo that others can see or contribute to (especially public). Each item is yes/no. Concepts:…
+
 ## `playbooks/`
 
 Multi-step procedures with branches and judgment calls. Narrative shape — distinct from a checklist, which is pure yes/no verification.
@@ -97,6 +134,12 @@ Multi-step procedures with branches and judgment calls. Narrative shape — dist
 - [Playbook: resolve a merge conflict](playbooks/git/resolve-merge-conflict.md) — Trigger: a merge, rebase, pull, cherry-pick, or stash pop stopped with "CONFLICT" and unmerged paths. Est. time: 2–20 min depending on count. Conflict-marker…
 - [Playbook: split one commit into several](playbooks/git/split-a-commit.md) — Trigger: a single (unpushed) commit bundles unrelated changes that should be separate commits — e.g. a bug fix and a refactor landed together. Est. time: 5–15…
 - [Playbook: undo a commit that's already pushed](playbooks/git/undo-published-commit.md) — Trigger: a commit is already on a remote that others may have pulled, and it needs to be undone. Est. time: 1–5 min. The rule behind this: rewriting published…
+
+### `playbooks/github/`
+
+- [Playbook: create and harden a new GitHub repo](playbooks/github/set-up-new-repo.md) — Trigger: starting a new project and publishing it to GitHub. Est. time: 10–15 min. Pairs with the local-side ../../checklists/git/new-repo-setup.md and…
+- [Playbook: ship a release](playbooks/github/ship-a-release.md) — Trigger: a version is ready to publish. Est. time: 5–15 min. Tag mechanics: ../../references/git/tags-and-signing.md; the version-control side of undoing a bad…
+- [Playbook: sync a fork with upstream](playbooks/github/sync-a-fork.md) — Trigger: your fork has fallen behind the original repo and you want it current (before starting new work, or before opening a PR). Est. time: 1–5 min. Model:…
 
 ## `scripts/`
 

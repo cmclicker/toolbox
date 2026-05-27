@@ -1,0 +1,41 @@
+# Node CI workflow. Copy to `.github/workflows/ci.yml` in a Node project.
+# Concepts: ../../../references/github/actions-concepts.md
+#
+# Uses @v5 actions (Node 24 runtime) to avoid the Node 20 deprecation.
+# Steps use `--if-present` so a project missing a given npm script won't fail.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege: this workflow only reads the repo. Raise per-job if needed.
+permissions:
+  contents: read
+
+# Cancel superseded runs on the same ref (saves CI minutes on rapid pushes).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint --if-present
+      - run: npm run typecheck --if-present
+      - run: npm test --if-present
+      - run: npm run build --if-present

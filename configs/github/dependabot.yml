@@ -1,0 +1,26 @@
+# Dependabot config. Copy to `.github/dependabot.yml`.
+# Opens PRs to keep dependencies (and the Actions you pin) current.
+# Background: ../../references/github/repo-security.md
+#
+# Adjust `package-ecosystem` per project: npm, pip, gomod, cargo, maven, etc.
+
+version: 2
+updates:
+  # Application/library dependencies (change ecosystem to match the project).
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Bundle minor/patch dev-dependency bumps into one PR to cut noise.
+      dev-minor-patch:
+        dependency-type: development
+        update-types: [minor, patch]
+
+  # Keep the actions used in workflows up to date (also addresses runner
+  # deprecations like Node 20 -> 24 by bumping action major versions).
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

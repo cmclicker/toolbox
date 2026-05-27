@@ -1,0 +1,19 @@
+# CODEOWNERS. Copy to `.github/CODEOWNERS` (or the repo root).
+# Lines map file patterns to owners; the LAST matching pattern wins (like
+# .gitignore precedence). When a PR touches a matched path, its owners are
+# auto-requested for review. Pair with a ruleset that requires CODEOWNERS
+# review on protected branches. Background:
+#   ../../references/github/pull-requests.md
+#   ../../references/github/branch-protection-and-rulesets.md
+#
+# Owners are @username or @org/team or an email. Replace the placeholders.
+
+# Default owner for everything not matched more specifically below.
+*                       @your-username
+
+# Area-specific owners (examples — delete or adapt):
+# /src/api/             @your-org/backend
+# /src/ui/              @your-org/frontend
+# *.tf                  @your-org/infra
+# /.github/             @your-username
+# /docs/                @your-org/docs
