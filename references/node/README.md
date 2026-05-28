@@ -1,6 +1,6 @@
 # Node.js — references
 
-> My authored explainers for Node.js — the runtime, its module systems, and package management. The TypeScript layer and JavaScript-the-language are separate domains in this cluster (added as they land). For curated external material, see [../../resources/node/](../../resources/node/).
+> My authored explainers for Node.js — the runtime, its module systems, and package management. The TypeScript layer is in [../typescript/](../typescript/) and JavaScript-the-language in [../javascript/](../javascript/). For curated external material, see [../../resources/node/](../../resources/node/).
 
 ## Modules & packaging
 
@@ -22,4 +22,4 @@
 
 - [../../configs/npm/](../../configs/npm/) — a sane `.npmrc`.
 - [../../snippets/node/](../../snippets/node/) · [../../checklists/node/](../../checklists/node/) · [../../playbooks/node/](../../playbooks/node/) · [../../resources/node/](../../resources/node/)
-- The `typescript` and `javascript` domains complete the JS/TS cluster (added as they land).
+- [../typescript/](../typescript/) — the type layer · [../javascript/](../javascript/) — the language. ESLint/Prettier (the tooling domain) closes the cluster.
