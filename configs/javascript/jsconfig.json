@@ -1,0 +1,30 @@
+// jsconfig.json — gives a PLAIN JavaScript project (no build step) editor-grade
+// type checking and IntelliSense via the TypeScript language service, with zero
+// TS adoption. Drop at the project root; VS Code picks it up automatically.
+// jsconfig allows comments (JSONC). For projects actually using TS, use the
+// tsconfig presets in ../typescript/ instead.
+{
+  "compilerOptions": {
+    // Type-check .js files and surface errors as you type (the main reason to add this).
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true, // jsconfig never emits; it's editor-only tooling
+
+    // Modern syntax + module resolution matching current Node.
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"], // add "DOM" for browser code
+
+    // Strictness — same payoff as in TS: catch null/undefined and sloppy code.
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src", "*.js", "*.mjs"],
+  "exclude": ["node_modules", "dist"]
+}

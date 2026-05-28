@@ -1,6 +1,6 @@
 # TypeScript — references
 
-> My authored explainers for TypeScript — the type system on top of JavaScript. The runtime (Node) is in [../node/](../node/); JavaScript-the-language is a separate domain in this cluster (added as it lands). For curated external material, see [../../resources/typescript/](../../resources/typescript/).
+> My authored explainers for TypeScript — the type system on top of JavaScript. The runtime (Node) is in [../node/](../node/); JavaScript-the-language is in [../javascript/](../javascript/). For curated external material, see [../../resources/typescript/](../../resources/typescript/).
 
 ## Setup & strictness
 
@@ -23,4 +23,4 @@
 
 - [../../configs/typescript/](../../configs/typescript/) — strict tsconfig presets.
 - [../../snippets/typescript/](../../snippets/typescript/) · [../../playbooks/typescript/](../../playbooks/typescript/) · [../../resources/typescript/](../../resources/typescript/)
-- [../node/](../node/) — the runtime · the `javascript` domain completes the cluster (added as it lands).
+- [../node/](../node/) — the runtime · [../javascript/](../javascript/) — the language. ESLint/Prettier (the tooling domain) closes the cluster.

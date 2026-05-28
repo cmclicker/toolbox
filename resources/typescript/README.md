@@ -1,6 +1,6 @@
 # TypeScript — resources
 
-> Curated external material for TypeScript. My own explainers are in [../../references/typescript/](../../references/typescript/); the runtime is in [../node/](../node/); the JavaScript-language catalog is added as that domain lands.
+> Curated external material for TypeScript. My own explainers are in [../../references/typescript/](../../references/typescript/); the runtime is in [../node/](../node/); the JavaScript-language catalog is in [../javascript/](../javascript/).
 
 ## Official docs & specs
 
