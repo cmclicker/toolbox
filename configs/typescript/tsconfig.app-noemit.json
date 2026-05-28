@@ -1,0 +1,16 @@
+// Variant for apps where a BUNDLER or runtime (Vite, esbuild, tsx, Bun) transpiles,
+// and tsc is used only as the type-checker (`tsc --noEmit` in CI / pre-commit).
+// Extends the strict base. Reference: ../../references/typescript/tsconfig.md
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // tsc checks types but emits nothing — the bundler owns the output.
+    "noEmit": true,
+    // Bundler resolution: allows extensionless imports and bundler-style paths.
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], // browser app; drop DOM for a Node-only app
+    "jsx": "react-jsx" // remove if not using React/JSX
+  },
+  "include": ["src"]
+}
